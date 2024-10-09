@@ -9,6 +9,6 @@ test('renders search input', () => {
 
 test('renders saved stories list', () => {
   render(<App />);
-  const searchElement = screen.getByText('Saved Stories');
-  expect(searchElement).toBeInTheDocument();
+  const storiesElement = screen.getByText('Saved Stories');
+  expect(storiesElement).toBeInTheDocument();
 });
