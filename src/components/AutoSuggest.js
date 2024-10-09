@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import StoryList from './StoryList.js';
 
-function AutoSuggest() {
+function AutoSuggest({onSelectStory}) {
   const [searchText, setSearchText] = useState('');
   const [stories, setStories] = useState([]);
   const [searchTimer, setSearchTimer] = useState(null);
@@ -30,6 +30,11 @@ function AutoSuggest() {
     setSearchText(event.target.value);
   }
 
+  const handleSelectStory = (story) => {
+    onSelectStory(story);
+    setIsFocused(false);
+  }
+
   return (
     <div className="autosuggest-container mx-auto">
       <div className="form-group text-start">
@@ -42,13 +47,12 @@ function AutoSuggest() {
           placeholder="Search title"
           onChange={handleInputChange}
           onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
         />
       </div>
 
-      {isFocused && searchText &&
+      {searchText && isFocused &&
         <div className="autosuggest-suggestions">
-          <StoryList stories={stories} />
+          <StoryList stories={stories} onSelectStory={handleSelectStory} />
         </div>
       }
     </div>
