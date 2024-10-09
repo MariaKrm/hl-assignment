@@ -1,6 +1,6 @@
 import StoryItem from './StoryItem.js';
 
-function StoryList({stories, onSelectStory}) {
+function StoryList({stories, onSelectStory, onDeleteStory}) {
   return (
     <ul className="list-group">
       {
@@ -11,7 +11,8 @@ function StoryList({stories, onSelectStory}) {
               points={item.points}
               author={item.author}
               comments={item.num_comments}
-              onClick={onSelectStory ? () => onSelectStory(item) : () => {}}
+              onClick={onSelectStory ? () => onSelectStory(item) : null}
+              onDelete={onDeleteStory ? () => onDeleteStory(item) : null}
             />
           </li>
         )

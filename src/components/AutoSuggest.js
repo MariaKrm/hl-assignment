@@ -16,7 +16,7 @@ function AutoSuggest({onSelectStory}) {
       console.log('Error fetching results', error);
       setStories([]);
     }
-  }
+  };
 
   const handleInputChange = (event) => {
     const value = event.target.value;
@@ -28,12 +28,12 @@ function AutoSuggest({onSelectStory}) {
     }
 
     setSearchText(event.target.value);
-  }
+  };
 
   const handleSelectStory = (story) => {
     onSelectStory(story);
     setIsFocused(false);
-  }
+  };
 
   return (
     <div className="autosuggest-container mx-auto">

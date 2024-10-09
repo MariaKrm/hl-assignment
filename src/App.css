@@ -14,6 +14,12 @@
   z-index: 1;
 }
 
-.autosuggest-suggestions .autosuggest-item {
+.autosuggest-suggestions .autosuggest-item:hover {
   cursor: pointer;
+  background-color: #f8f9fa;
+}
+
+.story-item .delete-button {
+  text-decoration: none;
+  color: unset;
 }

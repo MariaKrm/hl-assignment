@@ -7,8 +7,14 @@ function App() {
   const [savedStories, setSavedStories] = useState([]);
 
   const handleSelectStory = (story) => {
-    setSavedStories([...savedStories, story]);
-  }
+    if(!savedStories.find((item) => item.story_id === story.story_id)) {
+      setSavedStories([...savedStories, story]);
+    }
+  };
+
+  const handleDeleteStory = (story) => {
+    setSavedStories(savedStories.filter((item) => item.story_id !== story.story_id));
+  };
 
   return (
     <div className="App container py-5">
@@ -16,7 +22,7 @@ function App() {
 
       <br className="my-5" />
       <h2 className="fw-bold">Saved Stories</h2>
-      <StoryList stories={savedStories} />
+      <StoryList stories={savedStories} onDeleteStory={handleDeleteStory} />
     </div>
   );
 }
